@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Her Playlists🦚</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+                
+        :root {
+            --primary: #0a5c36;
+            --secondary: #2a9d8f;
+            --accent: #e9c46a;
+            --dark: #264653;
+            --light: #f8f9fa;
+            --peacock-blue: #017a96;
+            --peacock-green: #2a9d8f;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Comic Neue', cursive;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--dark);
+            min-height: 100vh;
+            padding-bottom: 50px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(to right, var(--primary), var(--peacock-blue));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Q50,80 0,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: 100% 100%;
+            opacity: 0.3;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInDown 1s ease-out forwards;
+        }
+        
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            80% {
+                transform: translateY(-5px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 4rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .peacock-group {
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .peacock-feather {
+            font-size: 2.5rem;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .peacock-feather:nth-child(1) {
+            animation-delay: 0s;
+        }
+        
+        .peacock-feather:nth-child(2) {
+            animation-delay: 0.5s;
+            font-size: 2.2rem;
+        }
+        
+        .peacock-feather:nth-child(3) {
+            animation-delay: 1s;
+            font-size: 1.8rem;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .subtitle {
+            font-weight: 300;
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Playlist Grid */
+        .playlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 2rem;
+        }
+        
+        /* Song Card */
+        .song-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        
+        .song-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .song-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .song-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--peacock-blue), var(--peacock-green));
+        }
+        
+        .song-cover {
+            height: 180px;
+            background: linear-gradient(45deg, var(--peacock-blue), var(--peacock-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .song-cover::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+            transform: rotate(30deg);
+        }
+        
+        .music-note {
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.7);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .song-info {
+            padding: 20px;
+        }
+        
+        .song-title {
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .song-artist {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+        
+        .song-desc {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 1.2rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .play-btn {
+            background: linear-gradient(to right, var(--peacock-blue), var(--peacock-green));
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            font-family: 'Comic Neue', cursive;
+            font-size: 1rem;
+        }
+        
+        .play-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(42, 157, 143, 0.4);
+            background: linear-gradient(to right, var(--peacock-green), var(--peacock-blue));
+        }
+        
+        .play-btn i {
+            margin-right: 8px;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 5rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.8rem;
+                flex-direction: column;
+            }
+            
+            .peacock-group {
+                margin: 10px 0;
+            }
+            
+            .playlist-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            }
+        }
+        
+        /* Special decorative elements */
+        .peacock-dots {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(233, 196, 106, 0.6);
+        }
+
+        .song-card.playing .music-note {
+    color: #fff;
+    animation: pulse 1s infinite, spin 4s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+        
+        /* Add some decorative dots */
+        .dot:nth-child(1) { top: 20%; left: 10%; }
+        .dot:nth-child(2) { top: 70%; left: 15%; }
+        .dot:nth-child(3) { top: 40%; left: 85%; }
+        .dot:nth-child(4) { top: 80%; left: 90%; }
+        .dot:nth-child(5) { top: 10%; left: 50%; }
+        
+        /* Floating animation for dots */
+        .dot:nth-child(1), .dot:nth-child(3), .dot:nth-child(5) {
+            animation: float-up 6s ease-in-out infinite;
+        }
+
+        
+        
+        .dot:nth-child(2), .dot:nth-child(4) {
+            animation: float-down 7s ease-in-out infinite;
+        }
+        
+        @keyframes float-up {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes float-down {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(20px); }
+        }
+        
+        /* Music notes decoration */
+        .music-notes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .music-note-deco {
+            position: absolute;
+            font-size: 1.5rem;
+            opacity: 0.2;
+            color: white;
+            animation: float-note 15s linear infinite;
+        }
+        
+        @keyframes float-note {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        /* Style for the update note box */
+.update-note-box {
+  background-color: #fff4e6; /* Light soft peach color */
+  color: #333; /* Dark text for contrast */
+  padding: 15px 25px;
+  text-align: center;
+  font-size: 16px;
+  font-family: 'Arial', sans-serif;
+  border-radius: 10px; /* Slightly rounded corners for a cute look */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px; /* Smaller box size */
+  margin: 40px auto; /* Center it horizontally and add margin for separation */
+  background-image: url('https://example.com/sunflower-image.png'); /* Replace with sunflower image URL */
+  background-repeat: no-repeat;
+  background-position: 95% 95%; /* Position the sunflower image at the bottom-right */
+  background-size: 30px 30px; /* Adjust the size of the sunflower */
+}
+
+/* Style for the text inside the note box */
+.update-note-box p {
+  margin: 0;
+  font-weight: bold; /* Bold text to highlight the message */
+  font-size: 16px;
+  color: #444; /* Slightly darker text for better readability */
+}
+
+.bhumikaa-message-box {
+  background: #fffaf0;
+  border: 2px dashed #fcd34d;
+  padding: 20px;
+  width: 300px;
+  border-radius: 20px;
+  margin-top: 40px;
+  margin-left: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  font-family: 'Poppins', sans-serif;
+  animation: fadeInSlide 1s ease-in-out;
+}
+
+.bhumikaa-message-box h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #444;
+}
+
+.bhumikaa-message-box textarea {
+  width: 100%;
+  height: 90px;
+  padding: 10px;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  background-color: #fff;
+  resize: none;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.bhumikaa-message-box button {}
+.bhumikaa-message-box {
+  background: #fffaf0;
+  border: 2px dashed #fcd34d;
+  padding: 20px;
+  width: 300px;
+  border-radius: 20px;
+  margin-top: 40px;
+  margin-left: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  font-family: 'Poppins', sans-serif;
+  animation: fadeInSlide 1s ease-in-out;
+}
+
+.bhumikaa-message-box h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #444;
+}
+
+.bhumikaa-message-box textarea {
+  width: 100%;
+  height: 90px;
+  padding: 10px;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  background-color: #fff;
+  resize: none;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.bhumikaa-message-box button {
+  margin-top: 10px;
+  background-color: #fcd34d;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.bhumikaa-message-box button:hover {
+  background-color: #fbbf24;
+}
+
+
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+      
+    <header>
+        <div class="peacock-dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+        <div class="music-notes">
+            <div class="music-note-deco" style="left: 10%; animation-delay: 0s;"><i class="fas fa-music"></i></div>
+            <div class="music-note-deco" style="left: 30%; animation-delay: 3s;"><i class="fas fa-music"></i></div>
+            <div class="music-note-deco" style="left: 70%; animation-delay: 6s;"><i class="fas fa-music"></i></div>
+            <div class="music-note-deco" style="left: 90%; animation-delay: 9s;"><i class="fas fa-music"></i></div>
+        </div>
+        <div class="header-content">
+            <h1>HER PLAYLIST <span class="peacock-group">
+                <span class="peacock-feather">🦚</span>
+                <span class="peacock-feather">🦚</span>
+                <span class="peacock-feather">🦚</span>
+            </span></h1>
+            <p class="subtitle">"Bhumikaa's playlist, woven with memories and melodies."</p>
+        </div>
+    </header>
+    
+    
+    <div class="container">
+        <div class="playlist-grid">
+            <!-- Song 1 -->
+            <div class="song-card">
+                <div class="song-cover">
+                    <div class="music-note"><i class="fas fa-music"></i></div>
+                </div>
+                <div class="song-info">
+                    <audio class="audio-player" src="Yeh Dil Tum Bin Kahin Lagta Nahin _ Mohammed Rafi, Lata Mangeshkar _ Izzat 1968 Songs.mp3"></audio>
+
+                    <h3 class="song-title">YEH DIL TUM BIN KAHIN</h3>
+                    <p class="song-artist"> Lata Mangeshkar and Mohammed Rafi
+                    </p>
+                    <p class="song-desc"></p>
+                    <button class="play-btn"><i class="fas fa-play"></i> Play</button>
+                </div>
+            </div>
+            
+            <!-- Song 2 -->
+            <div class="song-card">
+                <div class="song-cover">
+                    <div class="music-note"><i class="fas fa-music"></i></div>
+                </div>
+                <div class="song-info">
+                    <h3 class="song-title">  TU , TU HAI WAHI </h3>
+                    <p class="song-artist">Asha Bhosle and Kishore Kumar
+                    </p>
+                    <audio class="audio-player" src="ty.mp3"></audio>
+
+                    <p class="song-desc"></p>
+                    <button class="play-btn"><i class="fas fa-play"></i> Play</button>
+                </div>
+            </div>
+            
+            <!-- Song 3 -->
+            <div class="song-card">
+                <div class="song-cover">
+                    <div class="music-note"><i class="fas fa-music"></i></div>
+                </div>
+                <div class="song-info">
+                    <h3 class="song-title">RAFTA RAFTA </h3>
+                    <p class="song-artist">Atif Aslam</p>
+                    <audio src="Rafta Rafta Wo Meri _ Muhammad Ali _ Melodious Ghazal _ Tribute to Mehdi Hasan.mp3"></audio>
+                    <p class="song-desc"></p>
+                    <button class="play-btn"><i class="fas fa-play"></i> Play</button>
+                </div>
+            </div>
+            
+            <!-- Song 4 -->
+            <div class="song-card">
+                <div class="song-cover">
+                    <div class="music-note"><i class="fas fa-music"></i></div>
+                </div>
+                <div class="song-info">
+                    <h3 class="song-title">DEKHA EK KHWAB..</h3>
+                    <p class="song-artist">Amitabh Bachchan, Kishore Kumar, and Lata Mangeshkar</p>
+                    <audio src="Dekha Ek Khwab Song _ Silsila _ Amitabh Bachchan, Rekha _ Kishore Kumar, Lata Mangeshkar, Shiv-Hari.mp3"></audio>
+
+                    <p class="song-desc"></p>
+                    <button class="play-btn"><i class="fas fa-play"></i> Play</button>
+                </div>
+            </div>
+            
+            <!-- Song 5 -->
+            <div class="song-card">
+                <div class="song-cover">
+                    <div class="music-note"><i class="fas fa-music"></i></div>
+                </div>
+                <div class="song-info">
+                    <h3 class="song-title"> ITNA NA MUJHSE TU PYAAR BADHA </h3>
+                    <p class="song-artist"> Kailash Kher</p>
+                    <audio src="https___www.youtube.com_watch_v=ETbFRFB3krE.mp3"></audio>
+
+                    
+                    <p class="song-desc"></p>
+                    <button class="play-btn"><i class="fas fa-play"></i> Play</button>
+                </div>
+            </div>
+            
+            <!-- Song 6 -->
+            <div class="song-card">
+                <div class="song-cover">
+                    <div class="music-note"><i class="fas fa-music"></i></div>
+                </div>
+                <div class="song-info">
+                    <h3 class="song-title">PIYA TOSE NAINA LAAGE RE </h3>
+                    <p class="song-artist">Lata Mangeshkar
+                    </p>
+                    <audio src="Piya Tose Naina Laage Re - Guide Songs HD _ Waheeda Rehman _ Lata Mangeshkar.mp3"></audio>
+
+                    <p class="song-desc"></p>
+                    <button class="play-btn"><i class="fas fa-play"></i> Play</button>
+                </div>
+            </div>
+          
+        </div>
+    </div>
+   <!-- <div class="bhumikaa-message-box">
+        <h3>🌻   leave a message for me?</h3>
+        <textarea placeholder="Type your message here..."></textarea>
+        <button onclick="sendMessage()">Send</button>
+       
+
+      </div>
+      -->
+      
+    <div class="songs-list">
+       <!--- Your song list code goes here 
+      </div>
+    
+    -->
+      <div class="update-note-box">
+        
+        <p>🌻 The web will be updated soon 🌻</p>
+      </div>
+      
+    <footer>
+        <p> | Her Playlists🦚 © 4 OCT 2024 | </p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const playButtons = document.querySelectorAll(".play-button");
+          const songCards = document.querySelectorAll('.song-card');
+          
+          // Function to toggle song play/pause and handle play button text
+          playButtons.forEach(button => {
+            button.addEventListener("click", function () {
+              const audio = this.closest(".song-tile").querySelector(".audio-player");
+      
+              if (audio.paused) {
+                // Pause all other audios
+                document.querySelectorAll(".audio-player").forEach(a => {
+                  if (a !== audio) {
+                    a.pause();
+                    a.currentTime = 0;
+                  }
+                });
+      
+                audio.play();
+                this.textContent = "⏸"; // Pause icon
+              } else {
+                audio.pause();
+                this.textContent = "▶"; // Play icon
+              }
+            });
+          });
+      
+          // Function to check if an element is in viewport
+          function isInViewport(element) {
+            const rect = element.getBoundingClientRect();
+            return rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.75;
+          }
+      
+          // Create floating music notes
+          function createMusicNotes() {
+            const notesContainer = document.querySelector('.music-notes');
+            const notes = ['♪', '♫', '♩', '♬', '♭', '♮'];
+      
+            for (let i = 0; i < 8; i++) {
+              const note = document.createElement('div');
+              note.className = 'music-note-deco';
+              note.innerHTML = notes[Math.floor(Math.random() * notes.length)];
+              note.style.left = Math.random() * 100 + '%';
+              note.style.animationDelay = Math.random() * 15 + 's';
+              note.style.animationDuration = 10 + Math.random() * 20 + 's';
+              note.style.fontSize = (1 + Math.random() * 2) + 'rem';
+              notesContainer.appendChild(note);
+            }
+          }
+      
+          // Handle scroll to make song cards visible
+          function handleScroll() {
+            songCards.forEach(card => {
+              if (isInViewport(card)) {
+                card.classList.add('visible');
+              }
+            });
+          }
+      
+          // Initialize animations and viewport checks
+          handleScroll();
+          createMusicNotes();
+          
+          // IntersectionObserver for song cards visibility
+          const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.1 });
+      
+          songCards.forEach(card => observer.observe(card));
+          window.addEventListener('scroll', handleScroll);
+        });
+      </script>
+      
+      <script>
+        document.querySelectorAll('.play-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const audio = this.closest('.song-card').querySelector('audio');
+                if (audio.paused) {
+                    audio.play();
+                    this.innerHTML = '<i class="fas fa-pause"></i> Pause';
+                } else {
+                    audio.pause();
+                    this.innerHTML = '<i class="fas fa-play"></i> Play';
+                }
+            });
+        });
+    </script>
+   <!-- <script>
+
+        function sendMessage() {
+          const textarea = document.getElementById("bhumikaaMessage");
+          const message = textarea.value.trim();
+      
+          if (message) {
+            alert("Your message has been sent to Shubh! 💛🌻");
+            textarea.value = ""; // Clears the message box
+          } else {
+            alert("Please write something before sending 🌼");
+          }
+        }
+    
+      </script>
+      -->
+      
+</body>
+</html>
