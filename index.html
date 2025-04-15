@@ -9,8 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <style>
         /* Global Styles */
-                
-:root {
+        :root {
   --primary: #0a5c36;
   --secondary: #2a9d8f;
   --accent: #e9c46a;
@@ -27,7 +26,7 @@
 }
 
 body {
- font-family: 'Poppins', sans-serif;
+  font-family: Arial, sans-serif;
   background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
   color: var(--dark);
   min-height: 100vh;
@@ -68,7 +67,7 @@ header::before {
 }
 
 h1 {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Pacifico', cursive;
   font-size: 4rem;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
   letter-spacing: 1px;
@@ -212,7 +211,7 @@ h1 {
   font-weight: 600;
   cursor: pointer;
   transition: 0.3s;
-font-family: 'Poppins', sans-serif;
+  font-family: 'Comic Neue', cursive;
   font-size: 1rem;
   border: none;
 }
@@ -325,7 +324,128 @@ footer {
 }
 
 .bhumikaa-message-box button:hover { background-color: #fbbf24; }
+.countdown-container {
+    background: linear-gradient(145deg, #fff4e6, #fffaf0);
+    border-radius: 25px;
+    padding: 30px 40px;
+    width: fit-content;
+    margin: 2rem auto;
+    box-shadow: 0 10px 30px rgba(251, 191, 36, 0.1);
+    position: relative;
+    overflow: hidden;
+    border: 3px solid #fcd34d;
+    font-family: 'Poppins', sans-serif;
+}
 
+.countdown-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="%23fcd34d" opacity="0.1" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>');
+    animation: float 15s linear infinite;
+}
+
+.countdown-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.countdown-title {
+    font-size: 1.8rem;
+    color: #d97706;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    font-family: 'DM Serif Display', serif;
+}
+
+.countdown-subtitle {
+    color: #f59e0b;
+    margin: 10px 0 0;
+    font-size: 1.1rem;
+}
+
+.countdown-content {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.time-block {
+    background: white;
+    border-radius: 15px;
+    padding: 15px 20px;
+    min-width: 80px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(251, 191, 36, 0.1);
+    transition: all 0.3s ease;
+    border: 2px solid #fde68a;
+}
+
+.time-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(251, 191, 36, 0.2);
+}
+
+.time-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #d97706;
+    margin-bottom: 5px;
+    animation: numberPop 0.5s ease;
+}
+
+.time-label {
+    font-size: 0.9rem;
+    color: #f59e0b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.separator {
+    font-size: 2rem;
+    color: #fcd34d;
+    align-self: center;
+    animation: bounce 1.5s infinite;
+    margin: 0 5px;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+@media (max-width: 600px) {
+    .countdown-container {
+        padding: 20px;
+        width: 90%;
+    }
+    
+    .time-block {
+        padding: 10px 15px;
+        min-width: 70px;
+    }
+    
+    .time-number {
+        font-size: 2rem;
+    }
+    
+    .separator {
+        font-size: 1.5rem;
+    }
+}
+
+
+
+</style>
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -452,6 +572,39 @@ footer {
                 </div>
             </div>
           
+        </div>
+    </div>
+    
+    <div class="countdown-container">
+        <div class="countdown-header">
+            <h2 class="countdown-title">
+                <span>🌻</span>
+                May 3rd Countdown
+                <span>🌻</span>
+            </h2>
+            <p class="countdown-subtitle">Patiently waiting, endlessly loving</p>
+        </div>
+        
+        <div class="countdown-content">
+            <div class="time-block">
+                <div class="time-number" id="days">0</div>
+                <div class="time-label">Days</div>
+            </div>
+            <div class="separator">•</div>
+            <div class="time-block">
+                <div class="time-number" id="hours">0</div>
+                <div class="time-label">Hours</div>
+            </div>
+            <div class="separator">•</div>
+            <div class="time-block">
+                <div class="time-number" id="minutes">0</div>
+                <div class="time-label">Mins</div>
+            </div>
+            <div class="separator">•</div>
+            <div class="time-block">
+                <div class="time-number" id="seconds">0</div>
+                <div class="time-label">Secs</div>
+            </div>
         </div>
     </div>
    <!-- <div class="bhumikaa-message-box">
@@ -586,6 +739,31 @@ footer {
     
       </script>
       -->
+      <script>
+  // Countdown Timer Script
+const countdownDate = new Date("May 3, 2025 00:00:00").getTime();
+
+const countdownFunction = setInterval(function() {
+    const now = new Date().getTime();
+    const distance = countdownDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("days").textContent = days;
+    document.getElementById("hours").textContent = hours;
+    document.getElementById("minutes").textContent = minutes;
+    document.getElementById("seconds").textContent = seconds;
+
+    if (distance < 0) {
+        clearInterval(countdownFunction);
+        document.querySelector(".countdown-box").innerHTML = "<h2>It's Time! Meet you soon!</h2>";
+    }
+}, 1000);
+
+      </script>
       
 </body>
 </html>
