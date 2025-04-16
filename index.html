@@ -500,6 +500,28 @@ button:hover {
   font-family: 'Poppins', sans-serif;
   
 }
+/* Container for images */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust based on desired size */
+  gap: 20px;
+  margin-top: 20px;
+  justify-items: center;
+}
+
+/* Image styles */
+.image-grid img {
+  width: 100%;
+  height: 300px; /* Adjust based on the size you need */
+  object-fit: cover; /* Ensures images fill the space without distortion */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.image-grid img:hover {
+  transform: scale(1.05); /* Adds zoom effect on hover */
+}
 
 </style>
 
@@ -511,350 +533,233 @@ button:hover {
 </head>
 <body>
 
-      
-    <header>
-        <div class="peacock-dots">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-        </div>
-        <div class="music-notes">
-            <div class="music-note-deco" style="left: 10%; animation-delay: 0s;"><i class="fas fa-music"></i></div>
-            <div class="music-note-deco" style="left: 30%; animation-delay: 3s;"><i class="fas fa-music"></i></div>
-            <div class="music-note-deco" style="left: 70%; animation-delay: 6s;"><i class="fas fa-music"></i></div>
-            <div class="music-note-deco" style="left: 90%; animation-delay: 9s;"><i class="fas fa-music"></i></div>
-        </div>
-        <div class="header-content">
-            <h1>HER PLAYLIST <span class="peacock-group">
-                <span class="peacock-feather">🦚</span>
-                <span class="peacock-feather">🦚</span>
-                <span class="peacock-feather">🦚</span>
-            </span></h1>
-            <p class="subtitle">"Bhumikaa's playlist, woven with memories and melodies."</p>
-        </div>
-    </header>
-    
-    
-    <div class="container">
-        <div class="playlist-grid">
-            <!-- Song 1 -->
-            <div class="song-card">
-                <div class="song-cover">
-                    <div class="music-note"><i class="fas fa-music"></i></div>
-                </div>
-                <div class="song-info">
-                    <audio class="audio-player" src="Yeh Dil Tum Bin Kahin Lagta Nahin _ Mohammed Rafi, Lata Mangeshkar _ Izzat 1968 Songs.mp3"></audio>
+ <header>
+  <div class="peacock-dots">
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+  </div>
+  <div class="music-notes">
+    <div class="music-note-deco" style="left:10%;animation-delay:0s;"><i class="fas fa-music"></i></div>
+    <div class="music-note-deco" style="left:30%;animation-delay:3s;"><i class="fas fa-music"></i></div>
+    <div class="music-note-deco" style="left:70%;animation-delay:6s;"><i class="fas fa-music"></i></div>
+    <div class="music-note-deco" style="left:90%;animation-delay:9s;"><i class="fas fa-music"></i></div>
+  </div>
+  <div class="header-content">
+    <h1>HER PLAYLIST <span class="peacock-group"><span class="peacock-feather">🦚</span><span class="peacock-feather">🦚</span><span class="peacock-feather">🦚</span></span></h1>
+    <p class="subtitle">"Bhumikaa's playlist, woven with memories and melodies."</p>
+  </div>
+</header>
 
-                    <h3 class="song-title">YEH DIL TUM BIN KAHIN</h3>
-                    <p class="song-artist"> Lata Mangeshkar and Mohammed Rafi
-                    </p>
-                    <p class="song-desc"></p>
-                    <button class="play-btn"><i class="fas fa-play"></i> Play</button>
-                </div>
-            </div>
-            
-            <!-- Song 2 -->
-            <div class="song-card">
-                <div class="song-cover">
-                    <div class="music-note"><i class="fas fa-music"></i></div>
-                </div>
-                <div class="song-info">
-                    <h3 class="song-title">  TU , TU HAI WAHI </h3>
-                    <p class="song-artist">Asha Bhosle and Kishore Kumar
-                    </p>
-                    <audio class="audio-player" src="ty.mp3"></audio>
-
-                    <p class="song-desc"></p>
-                    <button class="play-btn"><i class="fas fa-play"></i> Play</button>
-                </div>
-            </div>
-            
-            <!-- Song 3 -->
-            <div class="song-card">
-                <div class="song-cover">
-                    <div class="music-note"><i class="fas fa-music"></i></div>
-                </div>
-                <div class="song-info">
-                    <h3 class="song-title">RAFTA RAFTA </h3>
-                    <p class="song-artist">Atif Aslam</p>
-                    <audio src="Rafta Rafta Wo Meri _ Muhammad Ali _ Melodious Ghazal _ Tribute to Mehdi Hasan.mp3"></audio>
-                    <p class="song-desc"></p>
-                    <button class="play-btn"><i class="fas fa-play"></i> Play</button>
-                </div>
-            </div>
-            
-            <!-- Song 4 -->
-            <div class="song-card">
-                <div class="song-cover">
-                    <div class="music-note"><i class="fas fa-music"></i></div>
-                </div>
-                <div class="song-info">
-                    <h3 class="song-title">DEKHA EK KHWAB..</h3>
-                    <p class="song-artist">Amitabh Bachchan, Kishore Kumar, and Lata Mangeshkar</p>
-                    <audio src="Dekha Ek Khwab Song _ Silsila _ Amitabh Bachchan, Rekha _ Kishore Kumar, Lata Mangeshkar, Shiv-Hari.mp3"></audio>
-
-                    <p class="song-desc"></p>
-                    <button class="play-btn"><i class="fas fa-play"></i> Play</button>
-                </div>
-            </div>
-            
-            <!-- Song 5 -->
-            <div class="song-card">
-                <div class="song-cover">
-                    <div class="music-note"><i class="fas fa-music"></i></div>
-                </div>
-                <div class="song-info">
-                    <h3 class="song-title"> ITNA NA MUJHSE TU PYAAR BADHA </h3>
-                    <p class="song-artist"> Kailash Kher</p>
-                    <audio src="https___www.youtube.com_watch_v=ETbFRFB3krE.mp3"></audio>
-
-                    
-                    <p class="song-desc"></p>
-                    <button class="play-btn"><i class="fas fa-play"></i> Play</button>
-                </div>
-            </div>
-            
-            <!-- Song 6 -->
-            <div class="song-card">
-                <div class="song-cover">
-                    <div class="music-note"><i class="fas fa-music"></i></div>
-                </div>
-                <div class="song-info">
-                    <h3 class="song-title">PIYA TOSE NAINA LAAGE RE </h3>
-                    <p class="song-artist">Lata Mangeshkar
-                    </p>
-                    <audio src="Piya Tose Naina Laage Re - Guide Songs HD _ Waheeda Rehman _ Lata Mangeshkar.mp3"></audio>
-
-                    <p class="song-desc"></p>
-                    <button class="play-btn"><i class="fas fa-play"></i> Play</button>
-                </div>
-            </div>
-          
-        </div>
+<div class="container">
+  <div class="playlist-grid">
+    <div class="song-card">
+      <div class="song-cover"><div class="music-note"><i class="fas fa-music"></i></div></div>
+      <div class="song-info">
+        <audio class="audio-player" src="Yeh Dil Tum Bin Kahin Lagta Nahin _ Mohammed Rafi, Lata Mangeshkar _ Izzat 1968 Songs.mp3"></audio>
+        <h3 class="song-title">YEH DIL TUM BIN KAHIN</h3>
+        <p class="song-artist">Lata Mangeshkar and Mohammed Rafi</p>
+        <button class="play-btn"><i class="fas fa-play"></i> Play</button>
+      </div>
     </div>
-    
-        <!-- Password Box -->
-        <div class="password-section">
-          <input type="password" id="passwordInput" placeholder="Enter password to unlock something special 💖" />
-          <button onclick="checkPassword()">Unlock</button>
-        
-          <div id="specialContent" style="display:none;">
-            <div class="special-box">
-              <h3>Our Memories 📸</h3>
-              <p>This space is just for us. Here's to every beautiful moment we've shared! 💫</p>
-              <!-- You can upload pics like this: -->
-              <img src="your-photo1.jpg" alt="Us ❤️" class="memory-pic">
-              <img src="Screenshot 2025-04-09 134237.png" alt="Sweet Moment 💕" class="memory-pic">
-            </div>
-          </div>
-        </div>
-        
-    <div class="countdown-container">
-        <div class="countdown-header">
-            <h2 class="countdown-title">
-                <span>🌻</span>
-                May 3rd Countdown
-                <span>🌻</span>
-            </h2>
-            <p class="countdown-subtitle">Patiently waiting, endlessly loving</p>
-        </div>
-        
-        <div class="countdown-content">
-            <div class="time-block">
-                <div class="time-number" id="days">0</div>
-                <div class="time-label">Days</div>
-            </div>
-            <div class="separator">•</div>
-            <div class="time-block">
-                <div class="time-number" id="hours">0</div>
-                <div class="time-label">Hours</div>
-            </div>
-            <div class="separator">•</div>
-            <div class="time-block">
-                <div class="time-number" id="minutes">0</div>
-                <div class="time-label">Mins</div>
-            </div>
-            <div class="separator">•</div>
-            <div class="time-block">
-                <div class="time-number" id="seconds">0</div>
-                <div class="time-label">Secs</div>
-            </div>
-        </div>
+
+    <div class="song-card">
+      <div class="song-cover"><div class="music-note"><i class="fas fa-music"></i></div></div>
+      <div class="song-info">
+        <h3 class="song-title">TU , TU HAI WAHI</h3>
+        <p class="song-artist">Asha Bhosle and Kishore Kumar</p>
+        <audio class="audio-player" src="ty.mp3"></audio>
+        <button class="play-btn"><i class="fas fa-play"></i> Play</button>
+      </div>
     </div>
-   <!-- <div class="bhumikaa-message-box">
-        <h3>🌻   leave a message for me?</h3>
-        <textarea placeholder="Type your message here..."></textarea>
-        <button onclick="sendMessage()">Send</button>
-       
 
+    <div class="song-card">
+      <div class="song-cover"><div class="music-note"><i class="fas fa-music"></i></div></div>
+      <div class="song-info">
+        <h3 class="song-title">RAFTA RAFTA</h3>
+        <p class="song-artist">Atif Aslam</p>
+        <audio src="Rafta Rafta Wo Meri _ Muhammad Ali _ Melodious Ghazal _ Tribute to Mehdi Hasan.mp3"></audio>
+        <button class="play-btn"><i class="fas fa-play"></i> Play</button>
       </div>
-      -->
+    </div>
+
+    <div class="song-card">
+      <div class="song-cover"><div class="music-note"><i class="fas fa-music"></i></div></div>
+      <div class="song-info">
+        <h3 class="song-title">DEKHA EK KHWAB..</h3>
+        <p class="song-artist">Amitabh Bachchan, Kishore Kumar, and Lata Mangeshkar</p>
+        <audio src="Dekha Ek Khwab Song _ Silsila _ Amitabh Bachchan, Rekha _ Kishore Kumar, Lata Mangeshkar, Shiv-Hari.mp3"></audio>
+        <button class="play-btn"><i class="fas fa-play"></i> Play</button>
+      </div>
+    </div>
+
+    <div class="song-card">
+      <div class="song-cover"><div class="music-note"><i class="fas fa-music"></i></div></div>
+      <div class="song-info">
+        <h3 class="song-title">ITNA NA MUJHSE TU PYAAR BADHA</h3>
+        <p class="song-artist">Kailash Kher</p>
+        <audio src="https___www.youtube.com_watch_v=ETbFRFB3krE.mp3"></audio>
+        <button class="play-btn"><i class="fas fa-play"></i> Play</button>
+      </div>
+    </div>
+
+    <div class="song-card">
+      <div class="song-cover"><div class="music-note"><i class="fas fa-music"></i></div></div>
+      <div class="song-info">
+        <h3 class="song-title">PIYA TOSE NAINA LAAGE RE</h3>
+        <p class="song-artist">Lata Mangeshkar</p>
+        <audio src="Piya Tose Naina Laage Re - Guide Songs HD _ Waheeda Rehman _ Lata Mangeshkar.mp3"></audio>
+        <button class="play-btn"><i class="fas fa-play"></i> Play</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="password-section">
+  <input type="password" id="passwordInput" placeholder="Enter password to unlock something special 💖" />
+  <button onclick="checkPassword()">Unlock</button>
+  <div id="specialContent" style="display:none;">
+    <div class="special-box">
+      <h3>Our Memories 📸</h3>
+      <p>Behind the scenes: The weirdness she never posts 📸</p>
+      <img src="l1.jpg" width="200" class="memory-pic">
+      <img src="l2.jpg" width="200" class="memory-pic">
       
-    <div class="songs-list">
-       <!--- Your song list code goes here 
-      </div>
-    
-    -->
+    </div>
+  </div>
+</div>
 
+<div class="countdown-container">
+  <div class="countdown-header">
+    <h2 class="countdown-title"><span>🌻</span>May 3rd Countdown<span>🌻</span></h2>
+    <p class="countdown-subtitle">Patiently waiting, endlessly loving</p>
+  </div>
+  <div class="countdown-content">
+    <div class="time-block"><div class="time-number" id="days">0</div><div class="time-label">Days</div></div>
+    <div class="separator">•</div>
+    <div class="time-block"><div class="time-number" id="hours">0</div><div class="time-label">Hours</div></div>
+    <div class="separator">•</div>
+    <div class="time-block"><div class="time-number" id="minutes">0</div><div class="time-label">Mins</div></div>
+    <div class="separator">•</div>
+    <div class="time-block"><div class="time-number" id="seconds">0</div><div class="time-label">Secs</div></div>
+  </div>
+</div>
 
-      <div class="update-note-box">
-        
-        <p>🌻 The web will be updated soon 🌻</p>
-      </div>
-      
-    <footer>
-        <p> | Her Playlists🦚 © 4 OCT 2024 | </p>
-    </footer>
+<div class="update-note-box">
+  <p>🌻 The web will be updated soon 🌻</p>
+</div>
+
+<footer>
+  <p>| Her Playlists🦚 © 4 OCT 2024 |</p>
+</footer>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-          const playButtons = document.querySelectorAll(".play-button");
-          const songCards = document.querySelectorAll('.song-card');
-          
-          // Function to toggle song play/pause and handle play button text
-          playButtons.forEach(button => {
-            button.addEventListener("click", function () {
-              const audio = this.closest(".song-tile").querySelector(".audio-player");
-      
-              if (audio.paused) {
-                // Pause all other audios
-                document.querySelectorAll(".audio-player").forEach(a => {
-                  if (a !== audio) {
-                    a.pause();
-                    a.currentTime = 0;
-                  }
-                });
-      
-                audio.play();
-                this.textContent = "⏸"; // Pause icon
-              } else {
-                audio.pause();
-                this.textContent = "▶"; // Play icon
-              }
+      document.addEventListener("DOMContentLoaded", function () {
+        const playButtons = document.querySelectorAll(".play-button");
+        const songCards = document.querySelectorAll('.song-card');
+    
+        playButtons.forEach(button => {
+          button.addEventListener("click", function () {
+            const audio = this.closest(".song-tile").querySelector(".audio-player");
+            document.querySelectorAll(".audio-player").forEach(a => {
+              if (a !== audio) a.pause(), a.currentTime = 0;
             });
+            audio.paused ? (audio.play(), this.textContent = "⏸") : (audio.pause(), this.textContent = "▶");
           });
-      
-          // Function to check if an element is in viewport
-          function isInViewport(element) {
-            const rect = element.getBoundingClientRect();
-            return rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.75;
-          }
-      
-          // Create floating music notes
-          function createMusicNotes() {
-            const notesContainer = document.querySelector('.music-notes');
-            const notes = ['♪', '♫', '♩', '♬', '♭', '♮'];
-      
-            for (let i = 0; i < 8; i++) {
-              const note = document.createElement('div');
-              note.className = 'music-note-deco';
-              note.innerHTML = notes[Math.floor(Math.random() * notes.length)];
-              note.style.left = Math.random() * 100 + '%';
-              note.style.animationDelay = Math.random() * 15 + 's';
-              note.style.animationDuration = 10 + Math.random() * 20 + 's';
-              note.style.fontSize = (1 + Math.random() * 2) + 'rem';
-              notesContainer.appendChild(note);
-            }
-          }
-      
-          // Handle scroll to make song cards visible
-          function handleScroll() {
-            songCards.forEach(card => {
-              if (isInViewport(card)) {
-                card.classList.add('visible');
-              }
-            });
-          }
-      
-          // Initialize animations and viewport checks
-          handleScroll();
-          createMusicNotes();
-          
-          // IntersectionObserver for song cards visibility
-          const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-              }
-            });
-          }, { threshold: 0.1 });
-      
-          songCards.forEach(card => observer.observe(card));
-          window.addEventListener('scroll', handleScroll);
         });
-      </script>
-      
-      <script>
-        document.querySelectorAll('.play-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const audio = this.closest('.song-card').querySelector('audio');
-                if (audio.paused) {
-                    audio.play();
-                    this.innerHTML = '<i class="fas fa-pause"></i> Pause';
-                } else {
-                    audio.pause();
-                    this.innerHTML = '<i class="fas fa-play"></i> Play';
-                }
+    
+        function isInViewport(el) {
+          const rect = el.getBoundingClientRect();
+          return rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.75;
+        }
+    
+        function createMusicNotes() {
+          const container = document.querySelector('.music-notes');
+          const notes = ['♪','♫','♩','♬','♭','♮'];
+          for (let i = 0; i < 8; i++) {
+            const note = document.createElement('div');
+            note.className = 'music-note-deco';
+            note.innerHTML = notes[Math.floor(Math.random()*notes.length)];
+            Object.assign(note.style, {
+              left: Math.random()*100 + '%',
+              animationDelay: Math.random()*15 + 's',
+              animationDuration: 10 + Math.random()*20 + 's',
+              fontSize: (1 + Math.random()*2) + 'rem'
             });
-        });
-    </script>
-   <!-- <script>
-
-        function sendMessage() {
-          const textarea = document.getElementById("bhumikaaMessage");
-          const message = textarea.value.trim();
-      
-          if (message) {
-            alert("Your message has been sent to Shubh! 💛🌻");
-            textarea.value = ""; // Clears the message box
-          } else {
-            alert("Please write something before sending 🌼");
+            container.appendChild(note);
           }
         }
     
-      </script>
-      -->
-      <script>
-  // Countdown Timer Script
-const countdownDate = new Date("May 3, 2025 00:00:00").getTime();
-
-const countdownFunction = setInterval(function() {
-    const now = new Date().getTime();
-    const distance = countdownDate - now;
-
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    document.getElementById("days").textContent = days;
-    document.getElementById("hours").textContent = hours;
-    document.getElementById("minutes").textContent = minutes;
-    document.getElementById("seconds").textContent = seconds;
-
-    if (distance < 0) {
-        clearInterval(countdownFunction);
-        document.querySelector(".countdown-box").innerHTML = "<h2>It's Time! Meet you soon!</h2>";
-    }
-}, 1000);
-
-      </script>
+        function handleScroll() {
+          songCards.forEach(card => {
+            if (isInViewport(card)) card.classList.add('visible');
+          });
+        }
+    
+        handleScroll();
+        createMusicNotes();
+    
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1 });
+    
+        songCards.forEach(card => observer.observe(card));
+        window.addEventListener('scroll', handleScroll);
+      });
+    </script>
+    
+    <script>
+      document.querySelectorAll('.play-btn').forEach(button => {
+        button.addEventListener('click', function() {
+          const audio = this.closest('.song-card').querySelector('audio');
+          audio.paused ? (audio.play(), this.innerHTML = '<i class="fas fa-pause"></i> Pause') : (audio.pause(), this.innerHTML = '<i class="fas fa-play"></i> Play');
+        });
+      });
+    </script>
+    
+    <script>
+      const countdownDate = new Date("May 3, 2025 00:00:00").getTime();
+      const countdownFunction = setInterval(function() {
+        const now = new Date().getTime();
+        const distance = countdownDate - now;
+        if (distance < 0) {
+          clearInterval(countdownFunction);
+          document.querySelector(".countdown-box").innerHTML = "<h2>It's Time! Meet you soon!</h2>";
+          return;
+        }
+        document.getElementById("days").textContent = Math.floor(distance / (1000 * 60 * 60 * 24));
+        document.getElementById("hours").textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        document.getElementById("minutes").textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        document.getElementById("seconds").textContent = Math.floor((distance % (1000 * 60)) / 1000);
+      }, 1000);
+    </script>
+    
     <script>
       function checkPassword() {
-        const correctPassword = "11"; // Change this to your desired password
         const userInput = document.getElementById("passwordInput").value;
         const content = document.getElementById("specialContent");
-      
-        if (userInput === correctPassword) {
-          content.style.display = "block";
-        } else {
-          alert("Oops! That's not the right password.");
-        }
+        userInput === "11" ? content.style.display = "block" : alert("Oops! That's not the right password.");
       }
-      </script>
+    </script>
     
+    <script>
+    (function() {
+      const warn = 'color: red; font-size: 18px; font-weight: bold;';
+      const info = 'color: gray; font-size: 12px;';
+      console.log('%c⚠️ SECURITY ALERT: Unauthorized access attempt detected!', warn);
+      console.log('%cSystem Integrity Check: 89% Complete...', info);
+      const fakeDecrypt = key => key === "letmein"
+        ? "✅ Access granted: This is a test message for users in the know"
+        : "❌ Invalid decryption key";
+      console.log('%c🔐 Enter decryption key to continue:', 'color: #00CED1; font-weight: bold;');
+      window.decrypt = key => console.log('%c' + fakeDecrypt(key), fakeDecrypt(key).includes("✅") ? 'color: green;' : 'color: orange;');
+      console.log('%cType %cdecrypt("yourkey")%c to continue...', 'color: yellow;', 'color: lightgreen;', 'color: yellow;');
+    })();
+    </script>
+  
 </body>
 </html>
