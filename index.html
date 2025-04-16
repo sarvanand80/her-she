@@ -443,6 +443,66 @@ footer {
     }
 }
 
+.password-section {
+  text-align: center;
+  margin-top: 40px;
+  font-family: 'Poppins', sans-serif;
+}
+
+input[type="password"] {
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+  font-size: 16px;
+  width: 280px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #ff6f91;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #ff3f70;
+}
+
+.special-box {
+  background: #ffeef2;
+  border: 2px dashed #ffb6c1;
+  padding: 25px;
+  margin-top: 30px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  animation: fadeIn 0.7s ease;
+}
+
+.memory-pic {
+  max-width: 100%;
+  margin: 10px 0;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: scale(0.95);}
+  to {opacity: 1; transform: scale(1);}
+}
+.password-section {
+  text-align: center;
+  margin-top: 80px; /* Increased margin creates gap from the songs section */
+  font-family: 'Poppins', sans-serif;
+  
+}
+
+</style>
+
 
 
 </style>
@@ -575,6 +635,22 @@ footer {
         </div>
     </div>
     
+        <!-- Password Box -->
+        <div class="password-section">
+          <input type="password" id="passwordInput" placeholder="Enter password to unlock something special 💖" />
+          <button onclick="checkPassword()">Unlock</button>
+        
+          <div id="specialContent" style="display:none;">
+            <div class="special-box">
+              <h3>Our Memories 📸</h3>
+              <p>This space is just for us. Here's to every beautiful moment we've shared! 💫</p>
+              <!-- You can upload pics like this: -->
+              <img src="your-photo1.jpg" alt="Us ❤️" class="memory-pic">
+              <img src="Screenshot 2025-04-09 134237.png" alt="Sweet Moment 💕" class="memory-pic">
+            </div>
+          </div>
+        </div>
+        
     <div class="countdown-container">
         <div class="countdown-header">
             <h2 class="countdown-title">
@@ -621,6 +697,8 @@ footer {
       </div>
     
     -->
+
+
       <div class="update-note-box">
         
         <p>🌻 The web will be updated soon 🌻</p>
@@ -764,6 +842,19 @@ const countdownFunction = setInterval(function() {
 }, 1000);
 
       </script>
+    <script>
+      function checkPassword() {
+        const correctPassword = "11"; // Change this to your desired password
+        const userInput = document.getElementById("passwordInput").value;
+        const content = document.getElementById("specialContent");
       
+        if (userInput === correctPassword) {
+          content.style.display = "block";
+        } else {
+          alert("Oops! That's not the right password.");
+        }
+      }
+      </script>
+    
 </body>
 </html>
