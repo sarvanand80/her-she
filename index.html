@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Her 🦚</title>
+    <title>Her Playlists🦚</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -524,7 +524,114 @@ button:hover {
 }
 
 </style>
-
+<style>
+  /* Updated Soft Yellow Color Scheme */
+  :root {
+    --primary: #d4a017; /* Soft golden yellow */
+    --secondary: #e9c46a; /* Muted yellow */
+    --accent: #f4e285; /* Pale yellow */
+    --dark: #5e4b1a; /* Dark brown for contrast */
+    --light: #fff9e6; /* Very soft off-white yellow */
+    --highlight: #f2d680; /* Warm highlight yellow */
+    --peacock-blue: #e9c46a; /* Now using soft yellows */
+    --peacock-green: #f4e285; /* Now using pale yellows */
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #fffdf5, #fff9e6); /* Soft white to very pale yellow */
+    color: var(--dark);
+    min-height: 100vh;
+    padding-bottom: 50px;
+  }
+  
+  header {
+    background: linear-gradient(to right, #e6c35c, #f2d680); /* Soft golden gradient */
+    color: #5e4b1a; /* Dark brown text for contrast */
+    padding: 2rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(212, 160, 23, 0.15);
+    margin-bottom: 3rem;
+  }
+  
+  .song-card {
+    background: #fffdf5; /* Very pale yellow-white */
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(233, 196, 106, 0.12);
+    border: 1px solid rgba(233, 196, 106, 0.2);
+  }
+  
+  .song-card::before {
+    background: linear-gradient(to right, #f2d680, #e9c46a);
+  }
+  
+  .play-btn {
+    background: linear-gradient(to right, #e6c35c, #e9c46a);
+    color: #5e4b1a;
+  }
+  
+  .play-btn:hover {
+    background: linear-gradient(to right, #e9c46a, #f2d680);
+  }
+  
+  .song-cover {
+    background: linear-gradient(45deg, #f2d680, #f4e285);
+  }
+  
+  .dot {
+    background: rgba(244, 226, 133, 0.5); /* Pale yellow dots */
+  }
+  
+  .music-note {
+    color: rgba(255, 255, 255, 0.85); /* Brighter notes for contrast */
+  }
+  
+  /* Update the countdown to match */
+  .countdown-container {
+    background: linear-gradient(145deg, #fffdf5, #fff9e6);
+    border: 3px solid #f2d680;
+  }
+  
+  .time-block {
+    background: white;
+    border: 2px solid #f4e285;
+  }
+  
+  .time-number {
+    color: #d4a017;
+  }
+  
+  .time-label {
+    color: #e6c35c;
+  }
+  
+  .separator {
+    color: #e9c46a;
+  }
+  
+  /* Update the password section */
+  .special-box {
+    background: #fffdf5;
+    border: 2px dashed #f2d680;
+  }
+  
+  input[type="password"] {
+    border: 1px solid #e9c46a;
+  }
+  
+  button {
+    background-color: #e6c35c;
+  }
+  
+  button:hover {
+    background-color: #d4a017;
+  }
+  
+  /* Keep all animations and other decorative elements */
+  </style>
 
 
 </style>
@@ -544,7 +651,7 @@ button:hover {
     <div class="music-note-deco" style="left:90%;animation-delay:9s;"><i class="fas fa-music"></i></div>
   </div>
   <div class="header-content">
-    <h1>HER  <span class="peacock-group"><span class="peacock-feather">🦚</span><span class="peacock-feather">🦚</span><span class="peacock-feather">🦚</span></span></h1>
+    <h1>HER PLAYLIST <span class="peacock-group"><span class="peacock-feather">🦚</span><span class="peacock-feather">🦚</span><span class="peacock-feather">🦚</span></span></h1>
     <p class="subtitle">"Bhumikaa's playlist, woven with memories and melodies."</p>
   </div>
 </header>
@@ -619,11 +726,11 @@ button:hover {
   <button onclick="checkPassword()">Unlock</button>
   <div id="specialContent" style="display:none;">
     <div class="special-box">
-      <h3>THE FAV PICS 📸</h3>
+      <h3>Our Memories 📸</h3>
       <p>Behind the scenes: The weirdness she never posts 📸</p>
       <img src="l1.jpg" width="200" class="memory-pic">
       <img src="l2.jpg" width="200" class="memory-pic">
-      
+      <img src="WhatsApp Image 2025-04-16 at 09.48.07_e9e81987.jpg" width="200" class="memory-pic">
     </div>
   </div>
 </div>
